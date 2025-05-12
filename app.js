@@ -14,44 +14,14 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+const bookRoutes = require('./routes/bookRoutes');
+const authorRoutes = require('./routes/authRoutes');
+
+app.use("/api/books", bookRoutes)
+
 app.get("/", (req, res, next) => {
     res.status(200).json({
         success: {message: "This route points to the Home page."},
-        statusCode: 200
-    })
-})
-
-app.get("/api/books", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will send all of the book data."},
-        statusCode: 200
-    })
-})
-
-app.get("/api/books/:id", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will send a single book by its id."},
-        statusCode: 200
-    })
-})
-
-app.get("/api/books/create/new", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will create a new book."},
-        statusCode: 200
-    })
-})
-
-app.get("/api/books/update/:id", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will update a book by its id."},
-        statusCode: 200
-    })
-})
-
-app.get("/api/books/delete/:id", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will delete a book by its id."},
         statusCode: 200
     })
 })
