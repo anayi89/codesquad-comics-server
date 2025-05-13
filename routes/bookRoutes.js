@@ -1,39 +1,15 @@
 const express = require("express")
+const { getAllBooks, getBook, createBook, updateBook, deleteBook } = require("../controllers/bookController")
 const router = express.Router()
 
-router.get("/", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will send all of the book data."},
-        statusCode: 200
-    })
-})
+router.get("/", getAllBooks)
 
-router.get("/:id", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will send a single book by its id."},
-        statusCode: 200
-    })
-})
+router.get("/:id", getBook)
 
-router.post("/create/new", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will create a new book."},
-        statusCode: 200
-    })
-})
+router.post("/create/new", createBook)
 
-router.put("/update/:id", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will update a book by its id."},
-        statusCode: 200
-    })
-})
+router.put("/update/:id", updateBook)
 
-router.delete("/delete/:id", (req, res, next) => {
-    res.status(200).json({
-        success: {message: "This will delete a book by its id."},
-        statusCode: 200
-    })
-})
+router.delete("/delete/:id", deleteBook)
 
 module.exports = router
