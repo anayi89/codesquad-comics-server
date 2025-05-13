@@ -15,9 +15,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 const bookRoutes = require('./routes/bookRoutes');
-const authorRoutes = require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 app.use("/api/books", bookRoutes)
+app.use("/auth", authRoutes)
 
 app.get("/", (req, res, next) => {
     res.status(200).json({
